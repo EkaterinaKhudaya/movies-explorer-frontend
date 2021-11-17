@@ -1,0 +1,140 @@
+.promo {
+    position: relative;
+    display: flex;
+    background-color: #F3C1F8;
+    box-sizing: border-box;
+    padding: 75px 70px 75px;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+
+
+}
+
+.promo__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.promo__data {
+    margin-bottom: 146px;
+}
+
+.promo__title {
+    margin: 0 0 36px 0;
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.promo__subtitle {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.5;
+    display: inline-block;
+    max-width: 310px;
+}
+
+.promo__button {
+    background-color: transparent;
+    border: 1px solid #000000;
+    width: max-content;
+    padding: 10px 20px;
+    align-self: start;
+    border-radius: 3px;
+
+}
+
+.promo__known-more {
+    text-decoration: none;
+    color: #000000;
+    font-size: 12px;
+    opacity: 1;
+}
+
+.promo__known-more:hover {
+    opacity: 0.8;
+}
+
+.promo__logo {
+    max-height: 304px;
+    max-width: 310px;
+}
+
+@media screen and (max-width: 895px) {
+    .promo {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 140px 44px 76px;
+    }
+
+    .promo__logo {
+        order: 1;
+    }
+
+    .promo__info {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .promo__data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 92px;
+    }
+
+    .promo__title {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 22px;
+        line-height: 50px;
+    }
+
+    .promo__subtitle {
+        text-align: center;
+    }
+
+    .promo__button {
+        align-self: center;
+    }
+
+    .promo__logo {
+        margin-bottom: 48px;
+        object-fit: scale-down;
+    }
+}
+
+@media screen and (max-width: 455px) {
+    .promo {
+        padding: 70px 10px 30px;
+    }
+
+    .promo__logo {
+        max-width: 210px;
+        max-height: 206px;
+    }
+
+    .promo__info {
+        align-items: center;
+        width: 300px;
+    }
+
+    .promo__data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .promo__title {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 24px;
+    }
+}

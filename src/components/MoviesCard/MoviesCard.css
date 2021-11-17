@@ -1,0 +1,109 @@
+.movie-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #F9F9F9;
+    box-sizing: border-box;
+    max-height: 134px;
+
+}
+
+.movie-card__info {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-card__about {
+    margin-bottom: 30px;
+}
+
+.movie-card__title {
+    margin: 0 0 13px 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.movie-card__duration {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 400;
+    color: #A0A0A0;
+}
+
+.movie-card__like-button {
+    background-image: url("../../images/notSaveMovie.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #F9F9F9;
+    object-fit: cover;
+    display: block;
+    min-width: 14px;
+    min-height: 12px;
+    padding: 0;
+    margin: 0;
+    align-self: start;
+    border: none;
+}
+
+.movie-card__like-button_active {
+    background-image: url("../../images/saveMovie.svg");
+}
+
+.movie-card__delete {
+    background-image: url("../../images/deleteIcon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #F9F9F9;
+    object-fit: cover;
+    display: block;
+    min-width: 14px;
+    min-height: 12px;
+    padding: 0;
+    margin: 0;
+    align-self: start;
+    border: none;
+}
+
+.movie-card__image {
+    object-fit: cover;
+    margin: 6px;
+}
+
+
+@media screen and (max-width: 690px) {
+    .movie-card {
+        max-height: 100%;
+
+    }
+
+    .movie-card {
+        flex-wrap: wrap-reverse;
+    }
+
+    .movie-card__info {
+        padding: 12px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .movie-card__about {
+        margin-bottom: 0;
+    }
+
+    .movie-card__image {
+        margin: 0;
+        width: 100%;
+    }
+
+    .movie-card__title {
+        font-size: 12px;
+        margin: 0 0 8px 0;
+    }
+
+
+}
