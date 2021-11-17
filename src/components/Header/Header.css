@@ -48,7 +48,6 @@
     opacity: 0.8;
 }
 
-
 .header__account {
     box-shadow: 0 0 10px 2px #F9F9F9;
     border-radius: 20px;
@@ -105,6 +104,10 @@
 
     .header__link {
         margin-right: 14px;
+        font-size: 10px;
+    }
+    .header__button {
+        font-size: 10px;
     }
 }
 

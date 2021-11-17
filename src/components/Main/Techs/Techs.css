@@ -60,7 +60,8 @@
     justify-content: center;
     flex-direction: row;
     margin-top: 100px;
-    gap: 0 10px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
     grid-template-columns:repeat(auto-fit, minmax(min-content, 90px));
 }
 
@@ -96,7 +97,7 @@
         margin-bottom: 22px;
     }
 
-    .techs__list_item{
+    .techs__list_item {
         font-size: 12px;
     }
 }
@@ -113,6 +114,14 @@
         padding: 70px 14px;
     }
 
+    .techs__header {
+        margin-bottom: 60px;
+    }
+
+    .techs__title {
+        font-size: 18px;
+    }
+
     .techs__info_title {
         font-size: 30px;
     }
@@ -123,6 +132,7 @@
 
     .techs__list {
         margin-top: 50px;
+        grid-template-columns:repeat(2, minmax(min-content, 84px));
     }
 
 }

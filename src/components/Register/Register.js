@@ -22,7 +22,9 @@ function Register(props) {
         <main className="register">
             <section className="register__container">
                 <div className="register__logo">
-                    <img src={logoPath} alt="Логотип проекта" className="register__logo-image"/>
+                    <Link to="/">
+                        <img src={logoPath} alt="Логотип проекта" className="register__logo-image"/>
+                    </Link>
                 </div>
                 <form className="register__form" onSubmit={handleSubmit}>
                     <div className="register__userdata">

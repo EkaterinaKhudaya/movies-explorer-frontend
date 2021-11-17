@@ -1,8 +1,15 @@
 import SearchForm from "../SearchForm/SearchForm";
 import './Movies.css'
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import React from 'react';
 
-function Movies(props) {
+function Movies() {
+    const [loadCards, setLoadCard] = React.useState(1);
+
+    function clickLoadCard() {
+        setLoadCard(loadCards+1)
+    }
+
     return (
         <main className="movies">
             <section className="movies__search">
@@ -10,10 +17,10 @@ function Movies(props) {
             </section>
 
             <section className="movies-cards">
-                <MoviesCardList/>
+                <MoviesCardList loadCards={loadCards}/>
             </section>
             <section className="movies__load">
-                <button type="button" className="movies__load-button">Ещё</button>
+                <button type="button" className="movies__load-button" onClick={clickLoadCard}>Ещё</button>
             </section>
         </main>
     )

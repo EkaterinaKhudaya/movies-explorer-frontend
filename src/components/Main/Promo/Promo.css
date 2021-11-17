@@ -72,6 +72,8 @@
 
     .promo__logo {
         order: 1;
+        margin-bottom: 48px;
+        object-fit: scale-down;
     }
 
     .promo__info {
@@ -105,10 +107,6 @@
         align-self: center;
     }
 
-    .promo__logo {
-        margin-bottom: 48px;
-        object-fit: scale-down;
-    }
 }
 
 @media screen and (max-width: 455px) {
@@ -119,6 +117,7 @@
     .promo__logo {
         max-width: 210px;
         max-height: 206px;
+        margin-bottom: 44px;
     }
 
     .promo__info {
@@ -130,11 +129,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 80px;
     }
 
     .promo__title {
-        text-align: center;
+        display: inline-block;
         font-size: 30px;
         margin-bottom: 24px;
+        line-height: 38px;
+        letter-spacing: -0.04em;
     }
 }

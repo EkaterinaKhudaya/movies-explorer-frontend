@@ -2,7 +2,7 @@ import './Header.css'
 import logoPath from "../../images/logo.svg";
 import accountIcon from "../../images/accountIcon.svg";
 import menuIcon from "../../images/menuIcon.svg";
-import {Link,  useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import React from 'react';
 
@@ -16,8 +16,8 @@ function Header(props) {
         })
     }, []);
 
-     const handleMenuClick = () => {
-         console.log(props.isNavigationMenuOpen)
+    const handleMenuClick = () => {
+        console.log(props.isNavigationMenuOpen)
         props.toggleNavigationMenu(!props.isNavigationMenuOpen);
     };
 
@@ -29,7 +29,9 @@ function Header(props) {
     return (
         <header className={`${getLocation() === "/" ? 'header__main' : ''}
         ${getLocation() === '/signin' || getLocation() === '/signup' ? 'header_sign' : 'header'}`}>
-            <img src={logoPath} alt="Логотип проекта" className="header__logo"/>
+            <Link to="/">
+                <img src={logoPath} alt="Логотип проекта" className="header__logo"/>
+            </Link>
             {(getLocation() === '/movies' || getLocation() === "/saved-movies" || getLocation() === "/profile") && screenWidth > 768 ?
                 <Navigation/>
                 : ''}
@@ -42,7 +44,8 @@ function Header(props) {
                 </Link>
                 : ''}
             {(getLocation() === '/movies' || getLocation() === "/saved-movies" || getLocation() === "/profile") && screenWidth <= 768 ?
-                <img src={menuIcon} alt="иконка меню навигации" className="header__navigation-menu" onClick={handleMenuClick}/>
+                <img src={menuIcon} alt="иконка меню навигации" className="header__navigation-menu"
+                     onClick={handleMenuClick}/>
                 : ''}
             {getLocation() === "/" ?
                 <div className="header__info">

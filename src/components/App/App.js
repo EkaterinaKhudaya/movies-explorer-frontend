@@ -16,6 +16,7 @@ import NavigationPopup from "../NavigationPopup/NavigationPopup";
 function App() {
     const [isNavigationMenuOpen, setNavigationMenu] = React.useState(false);
 
+
     function openNavigationMenu(data) {
         setNavigationMenu(data)
     }

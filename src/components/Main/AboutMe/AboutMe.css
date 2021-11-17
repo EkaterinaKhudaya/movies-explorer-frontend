@@ -142,5 +142,26 @@
         height: 352px;
     }
 
+}
+
+@media screen and (max-width: 320px) {
+    .aboutMe__photo {
+        margin-bottom: 40px;
+    }
+
+    .aboutMe__userdata_title {
+        font-size: 30px;
+    }
+
+     .aboutMe__userdata {
+        margin-bottom: 0;
+    }
+
+    .aboutMe__userdata_info {
+        font-size: 11px;
+        line-height: 16px;
+        margin-bottom: 40px;
+    }
+
 
 }

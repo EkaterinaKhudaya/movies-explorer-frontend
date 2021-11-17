@@ -65,6 +65,10 @@
         padding: 0 14px 70px;
     }
 
+    .portfolio__projects-list {
+        margin-top: 40px;
+    }
+
     .portfolio__projects-list-item_title {
         font-size: 18px;
     }

@@ -1,12 +1,13 @@
 import MovieCard from "../MoviesCard/MoviesCard";
-import './MoviesCardList.css'
-import movieImage from '../../images/movieImage.png'
+import './MoviesCardList.css';
+import movieImage from '../../images/movieImage.png';
+import React from 'react';
 
-function MoviesCardList() {
+function MoviesCardList(props) {
     const cardsList = [
         {
             id: 1,
-            name: '33 слова о дизайне',
+            name: '33 слова о дизайнеsss',
             duration: '1ч 42м',
             image: movieImage
         },
@@ -46,10 +47,32 @@ function MoviesCardList() {
             duration: '1ч 42м',
             image: movieImage
         },
+         {
+            id: 8,
+            name: '33 слова о дизайне',
+            duration: '1ч 42м',
+            image: movieImage
+        },
+         {
+            id: 9,
+            name: '33 слова о дизайне',
+            duration: '1ч 42м',
+            image: movieImage
+        },
     ]
+
+    function sliceCardList() {
+        if (props.loadCards) {
+             return cardsList.slice(0,7*props.loadCards)
+        } else {
+            return cardsList
+        }
+
+    }
     return (
         <ul className="movies-cards__list">
-            {cardsList.map((item) =>
+            {sliceCardList().map((item) =>
+
                 <div className="movies-cards__list-item">
                     <MovieCard key={item['id']} card={item} />
                 </div>

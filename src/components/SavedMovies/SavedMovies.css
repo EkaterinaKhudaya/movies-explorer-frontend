@@ -11,7 +11,7 @@
 
 .saved-movies__cards {
     align-self: stretch;
-    padding-top: 10px;
+    padding-top: 70px;
 }
 
 .saved-movies__search {
@@ -24,8 +24,28 @@
     padding-top: 10px;
 }
 
+@media screen and (max-width: 768px) {
+    .saved-movies {
+        padding: 80px 30px;
+    }
+
+    .saved-movies__search {
+        padding-bottom: 100px;
+    }
+
+
+}
+
 @media screen and (max-width: 530px) {
     .saved-movies {
         padding: 80px 10px;
+    }
+
+    .saved-movies__cards {
+        padding-top: 50px;
+    }
+
+    .saved-movies__search {
+        padding-bottom: 44px;
     }
 }

@@ -20,7 +20,9 @@ function Login(props) {
         <main className="sign">
             <section className="sign__container">
                 <div className="sign__logo">
-                    <img src={logoPath} alt="Логотип проекта" className="sign__logo-image"/>
+                    <Link to="/">
+                       <img src={logoPath} alt="Логотип проекта" className="sign__logo-image"/>
+                    </Link>
                 </div>
                 <form className="sign__form" onSubmit={handleSubmit}>
                     <div className="sign__userdata">
