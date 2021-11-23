@@ -1,0 +1,26 @@
+.page {
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    color: #000000;
+    flex-direction: column;
+    background-color: #fff;
+    height: 100vh;
+    max-width: 1280px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+
+}
+
+.app__footer {
+    display: none;
+}
+

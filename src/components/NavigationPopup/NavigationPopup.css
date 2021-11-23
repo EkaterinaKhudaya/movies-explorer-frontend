@@ -1,0 +1,128 @@
+.navigationMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    visibility: hidden;
+    background-color: #ffffff;
+}
+
+.navigationMenu__opened {
+    visibility: visible;
+}
+
+.navigationMenu__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.navigationMenu__close-button {
+    background-image: url("../../images/deleteIcon.svg");
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    padding: 0;
+    top: 22px;
+    right: 22px;
+    width: 22px;
+    height: 22px;
+    border: none;
+}
+
+.navigationMenu__close-button:active, .navigationMenu__close-button:focus {
+    outline: none;
+}
+
+.navigationMenu__close-button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.navigationMenu_list {
+    margin-top: 159px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navigationMenu__item {
+    list-style-type: none;
+    margin-bottom: 28px;
+}
+
+.navigationMenu__link {
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #000000;
+    opacity: 1;
+}
+
+.navigationMenu__link:hover {
+    opacity: 0.8;
+}
+
+.navigationMenu__link_active {
+    border-bottom: 2px solid #000000;
+}
+
+.navigationMenu__account {
+    box-shadow: 0 0 10px 2px #F9F9F9;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 3px 10px 11px;
+    box-sizing: border-box;
+    max-height: 32px;
+    min-width: 100px;
+    justify-content: space-between;
+    text-decoration: none;
+    margin-bottom: 90px;
+}
+
+.navigationMenu__account-link {
+    display: inline;
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+    opacity: 1;
+    margin: 0;
+}
+
+.navigationMenu__account-link:hover {
+    opacity: 0.8;
+}
+
+
+.navigationMenu__account-image {
+    display: inline-flex;
+    background-color: #F9F9F9;
+    border-radius: 50%;
+    min-width: 26px;
+    min-height: 26px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 555px) {
+    .navigationMenu {
+        width: 100%;
+    }
+
+
+
+}
+

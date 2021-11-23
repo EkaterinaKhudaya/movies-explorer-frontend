@@ -1,0 +1,157 @@
+.aboutProject {
+    position: relative;
+    padding: 110px 70px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.aboutProject__header {
+    box-sizing: border-box;
+    padding-bottom: 23px;
+    margin-bottom: 70px;
+    border-bottom: 1px solid #000;
+}
+
+.aboutProject__title {
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.aboutProject__info {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.aboutProject__baseData:first-child {
+    margin-right: 30px;
+}
+
+
+.aboutProject__baseData_title {
+    font-size: 20px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 24px;
+    margin: 0 0 26px 0;
+}
+
+.aboutProject__baseData_subtitle {
+    line-height: 20px;
+    font-size: 14px;
+    text-align: left;
+    margin: 0;
+}
+
+.aboutProject__timeline {
+    display: flex;
+    text-align: center;
+    margin-top: 110px;
+}
+
+.aboutProject__timeline_block {
+    padding: 9px 14px;
+    margin-bottom: 14px;
+    box-sizing: border-box;
+}
+
+.aboutProject__timeline_backend {
+    width: 20%;
+}
+
+.aboutProject__dark-theme {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.aboutProject__timeline_frontend {
+    width: 80%;
+}
+
+.aboutProject__light-theme {
+    background-color: #F2F2F2;
+}
+
+.aboutProject__timeline_title {
+    margin: 0;
+    font-size: 14px;
+}
+
+.aboutProject__timeline_subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: #A0A0A0;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutProject {
+        padding: 90px 50px;
+    }
+
+    .aboutProject__baseData_title {
+        margin-bottom: 22px;
+    }
+
+    .aboutProject__baseData_subtitle {
+        line-height: 18px;
+        font-size: 12px;
+    }
+
+    .aboutProject__timeline {
+        margin-top: 93px;
+    }
+
+
+}
+
+@media screen and (max-width: 574px) {
+    .aboutProject {
+        padding: 70px 18px;
+    }
+
+    .aboutProject__info {
+        flex-wrap: wrap;
+    }
+
+    .aboutProject__header {
+        margin-bottom: 60px;
+    }
+
+    .aboutProject__title {
+        font-size: 18px;
+    }
+
+    .aboutProject__baseData_title {
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .aboutProject__baseData_subtitle {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .aboutProject__baseData:last-child {
+        margin-right: 0;
+        margin-top: 56px;
+    }
+
+    .aboutProject__timeline_title {
+        font-size: 11px;
+    }
+
+    .aboutProject__timeline_backend {
+        width: 40%;
+    }
+
+    .aboutProject__timeline_frontend {
+        width: 60%;
+    }
+
+    .aboutProject__timeline {
+        margin-top: 60px;
+    }
+}

@@ -1,0 +1,84 @@
+.profile {
+    display: flex;
+    margin: 74px auto 70px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+
+}
+
+.profile__username {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.profile__userData {
+    margin-top: 123px;
+    min-width: 410px;
+}
+
+.profile__nameData {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 17px;
+}
+
+.profile__emailData {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 17px;
+    margin-bottom: 220px;
+}
+
+.profile__input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.profile__field {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.profile__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.profile__button-edit {
+    border: none;
+    background-color: transparent;
+    opacity: 1;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+.profile__button-edit:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.profile__exit-link {
+    text-decoration: none;
+    color: #FF4062;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 500px) {
+    .profile__userData {
+        min-width: 260px;
+    }
+
+
+}

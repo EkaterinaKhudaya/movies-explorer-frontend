@@ -1,0 +1,21 @@
+.movies-cards__list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.movies-cards__list-item {
+    margin-bottom: 40px;
+}
+
+.movies-cards__list-item:last-of-type {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 320px) {
+
+    .movies-cards__list-item {
+        margin-bottom: 20px;
+    }
+}
+

@@ -1,0 +1,36 @@
+
+.checkbox {
+    display: none;
+}
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    min-width: 34px;
+    min-height: 14px;
+    background-color: #2BE080;
+    border-radius: 20px;
+    margin-right: 14px;
+}
+
+.toggle:before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    top: 2px;
+    left: 2px;
+    transition: all 0.5s;
+}
+
+.toggle-right:before {
+    left: 22px;
+}
+
+.filter__label {
+    font-size: 13px;
+    font-weight: 400;
+}
+
