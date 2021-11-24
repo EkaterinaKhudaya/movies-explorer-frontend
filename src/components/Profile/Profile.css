@@ -64,6 +64,14 @@
     font-size: 13px;
 }
 
+.profile__button-edit_disabled {
+    border: none;
+    background-color: transparent;
+    opacity: 0.8;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
 .profile__button-edit:hover {
     cursor: pointer;
     opacity: 0.8;

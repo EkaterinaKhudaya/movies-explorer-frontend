@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 import {Link} from "react-router-dom";
 import './Register.css'
 import logoPath from "../../images/logo.svg";
+import { useFormWithValidation} from "../ValidationForm/validation"
 
 function Register(props) {
-    const nameRef = React.useRef();
-    const emailRef = React.useRef();
-    const passwordRef = React.useRef();
+    const {values, handleChange, errors, isValid, resetForm} = useFormWithValidation();
 
     function handleSubmit(e) {
         e.preventDefault();
         props.onRegistartion(
             {
-                name: nameRef.current.value,
-                email: emailRef.current.value,
-                password: passwordRef.current.value
+                name: values.name,
+                email: values.email,
+                password: values.password
             })
+        resetForm()
     }
 
     return (
@@ -32,28 +32,28 @@ function Register(props) {
                         <div className="register__input">
                             <label className="register__field">Имя</label>
                             <input className="register__item" type="text"
-                                   id="name-input" ref={nameRef}
+                                   id="name-input" value={values.name || ''} onChange={handleChange}
                                    name="name" minLength="2" required/>
-                            <span className="register__error register__error_visible"/>
+                            {errors?.name?.length > 0 && <span className="error">{errors.name}</span>}
                         </div>
 
                         <div className="register__input">
                             <label className="register__field">Email</label>
                             <input className="register__item" type="email"
-                                   id="email-input" ref={emailRef}
+                                   id="email-input" value={values.email || ''} onChange={handleChange}
                                    name="email" minLength="2" required/>
-                            <span className="register__error register__error_visible"/>
+                            {errors?.email?.length > 0 && <span className="error">{errors.email}</span>}
                         </div>
                         <div className="register__input">
                             <label className="register__field">Пароль</label>
                             <input className="register__item" type="password"
-                                   id="password-input" ref={passwordRef}
+                                   id="password-input" value={values.password || ''} onChange={handleChange}
                                    name="password" minLength="8" required/>
-                            <span className="register__error register__error_visible"/>
+                            {errors?.password?.length > 0 && <span className="error">{errors.password}</span>}
                         </div>
                     </div>
                     <div className="register__submit">
-                        <input className="register__button" type="submit" value="Зарегистрироваться"/>
+                        <input className={isValid ? "register__button":"register__button_disabled"} type="submit" value="Зарегистрироваться" disabled={!isValid}/>
                         <div className="register__action">
                             <p className="register__question">Уже зарегистрированы?</p>
                             <Link to="signin" className="register__link">Войти</Link>

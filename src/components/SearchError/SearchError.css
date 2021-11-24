@@ -1,0 +1,9 @@
+.search-error {
+    display: flex;
+    justify-content: center;
+}
+
+.search-error__item {
+    margin: 0;
+    text-align: center;
+}
