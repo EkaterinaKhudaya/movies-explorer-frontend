@@ -2,66 +2,91 @@ import React, {useCallback} from "react";
 
 
 export function SearchMovies() {
-    const [fullList, setFullList] = React.useState(null);
-    const [cardsList, setCardsList] = React.useState(null);
+    const [fullList, setFullList] = React.useState([]);
+    const [cardsList, setCardsList] = React.useState([]);
     const [cardsSearch, setCardsSearch] = React.useState('');
     const [isPreloader, setIsPreloader] = React.useState(false);
     const [isEmptyFilter, setIsEmptyFilter] = React.useState(false);
     const [shortFilms, setShortFilms] = React.useState(false);
- const [page, setPage] = React.useState(1);
+    const [page, setPage] = React.useState(1);
 
-    const handleSearchMovies = (data) => {
-        console.log(shortFilms)
-        setIsPreloader(true)
+    const handleSearchMovies =  (data, movieList) => {
         setPage(1)
         setCardsSearch(data)
+        setFullList(movieList)
         let cardsFilter = []
         if (shortFilms) {
-            cardsFilter = fullList.filter((item) =>
+            cardsFilter = movieList.filter((item) =>
                 item.nameRU.toLowerCase().includes(data.toLowerCase()) && item.duration < 40
             )
         } else {
-            cardsFilter = fullList.filter((item) =>
+            cardsFilter = movieList.filter((item) =>
                 item.nameRU.toLowerCase().includes(data.toLowerCase())
             )
         }
 
-        setIsPreloader(false)
         if (cardsFilter.length === 0) {
             setIsEmptyFilter(true)
         } else {
             setIsEmptyFilter(false)
         }
         setCardsList(cardsFilter)
+
+        // changeIsPreloader(false)
     }
 
     const handleShortFilm = (isShortForm) => {
-         setShortFilms(isShortForm);
+        setShortFilms(isShortForm);
     }
 
 
-    const getFullList = useCallback(
-        (fullList = []) => {
-            setFullList(fullList);
+    const changeIsPreloader = useCallback(
+        (isPreloader) => {
+            console.log(isPreloader)
+            setIsPreloader(isPreloader);
 
-        }, [setFullList]);
+        }, [setIsPreloader]);
+
+
+    const getFullList =
+        (data) => {
+            setFullList(data);
+        };
 
     const getIsShortFilm = useCallback(
-        (isShortFilm=true) => {
-            console.log(isShortFilm)
+        (isShortFilm = true) => {
             setShortFilms(isShortFilm);
 
         }, [setShortFilms]);
 
-     const changePage = useCallback(
+    const changeCardsList = useCallback(
+        (cards) => {
+           setCardsList(cards)
+
+        }, [setCardsList]);
+
+    const changePage = useCallback(
         (page) => {
             setPage(page);
 
         }, [setPage]);
 
 
-
-
-    return {cardsList,fullList, isEmptyFilter, cardsSearch, isPreloader, handleSearchMovies, getFullList, getIsShortFilm, handleShortFilm, page, changePage, shortFilms};
+    return {
+        changeIsPreloader,
+        changeCardsList,
+        isPreloader,
+        cardsList,
+        fullList,
+        isEmptyFilter,
+        cardsSearch,
+        handleSearchMovies,
+        getFullList,
+        getIsShortFilm,
+        handleShortFilm,
+        page,
+        changePage,
+        shortFilms
+    };
 }
 

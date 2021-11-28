@@ -3,25 +3,30 @@ import React from 'react';
 import {useLocation} from "react-router-dom";
 
 function MovieCard(props) {
-    const [isSave, setIsSaves] = React.useState(false)
+    const isSave =checkIsCardSave()
     const currentPath = useLocation()
-    React.useEffect(() => {
-        checkIsCardSave()
-    }, [])
 
-    function clickOnCardSave() {
-        isSave ? props.handleDeleteMovie(getSavedCardId()) : props.handleSaveMovie(props.card)
-        checkIsCardSave()
-    }
+    // function clickOnCardSave() {
+    //     isSave ? props.handleDeleteMovie(getSavedCardId()) : props.handleSaveMovie(props.card)
+    // }
 
     function checkIsCardSave() {
+
         const card = props.savedMovies.find((item) => item.movieId === props.card.id)
-        setIsSaves(!!card?.movieId)
+        return !!card?.movieId
     }
 
-    function getSavedCardId() {
-        return props.savedMovies.find((item) => item.movieId === props.card.id)
+       // function getSavedCardId() {
+       //  return props.savedMovies.find((item) => item.movieId === props.card.id)
+    // }
+
+
+    function getSavedCardId(card) {
+         console.log(props.savedMovies)
+        console.log(card)
+        return props.savedMovies.find((item) => item.movieId === card.id)
     }
+
 
 
     function getLocation() {
@@ -49,11 +54,11 @@ function MovieCard(props) {
                 {getLocation() === '/movies' ?
                     <button className={`movie-card__like-button ${isSave ? 'movie-card__like-button_active' : ''}`}
                             type="button"
-                            onClick={() => clickOnCardSave()}/> : ""
+                            onClick={() => isSave ? props.handleOnCardUnSave(getSavedCardId(props.card)) : props.handleOnCardSave(props.card)}/> : ""
                 }
                 {getLocation() === '/saved-movies' ?
                     <button className="movie-card__delete" type="button"
-                            onClick={() => props.handleDeleteMovie(props.card)}/> : ""
+                            onClick={() => props.handleOnCardUnSave(props.card)}/> : ""
                 }
             </div>
 

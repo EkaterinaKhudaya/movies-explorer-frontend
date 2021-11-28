@@ -47,7 +47,7 @@ function Profile(props) {
                     <input type="submit"
                            className="profile__button-edit"
                            value="Редактировать"  disabled={!isEditProfile()}/>
-                    <Link to="signin" className="profile__exit-link" onClick={props.onLogedOut}>Выйти из аккуанта</Link>
+                    <Link to="/" className="profile__exit-link" onClick={props.onLogedOut}>Выйти из аккуанта</Link>
                 </div>
             </form>
         </section>

@@ -31,6 +31,7 @@ function Login(props) {
                         <div className="sign__input">
                             <label className="sign__field">Email</label>
                             <input className="sign__item" type="email"
+                                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"
                                    id="email-input" value={values.email || ''} onChange={handleChange}
                                    name="email" minLength="2" required/>
                            {errors?.email?.length > 0 && <span className="error">{errors.email}</span>}

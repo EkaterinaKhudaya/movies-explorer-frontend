@@ -8,25 +8,47 @@ import {SearchMovies} from "../FilterData/FilterData";
 
 
 function SavedMovies(props) {
-    const {cardsList, fullList, isEmptyFilter, isPreloader, handleSearchMovies, getFullList, handleShortFilm} = SearchMovies()
-
+    const {
+        changeCardsList,
+        shortFilms,
+        cardsSearch,
+        cardsList,
+        fullList,
+        isEmptyFilter,
+        isPreloader,
+        handleSearchMovies,
+        handleShortFilm
+    } = SearchMovies()
 
     React.useEffect(() => {
-        getFullList(props.listSavedMovies)
-    }, [props.listSavedMovies, getFullList])
+        changeCardsList(props.listSavedMovies)
+    }, [props.listSavedMovies])
 
+    const handleSearch = (data) => {
+        handleSearchMovies(data, props.listSavedMovies)
+    }
+
+     const handleSearchShortFilm = (data) => {
+        handleShortFilm(data)
+        if (fullList.length > 0) {
+            handleSearch(cardsSearch)
+        }
+
+    }
 
 
     return (
         <main className="saved-movies">
             <section className="saved-movies__search">
-                <SearchForm handleLoadData={handleSearchMovies} handleShortFilm={handleShortFilm}/>
+                <SearchForm handleLoadData={handleSearch}
+                            handleShortFilm={handleSearchShortFilm}
+                            shortFilms={shortFilms}/>
             </section>
             <section className="saved-movies__cards">
                 {isPreloader && <Preloader/>}
                 {(isEmptyFilter) &&
                 <SearchError isFilterError={isEmptyFilter}/>}
-                <MoviesCardList cardsList={cardsList?.length>0 ? cardsList: isEmptyFilter ? []:fullList}
+                <MoviesCardList cardsList={cardsList?.length > 0 ? cardsList : isEmptyFilter ? [] : fullList}
                                 savedMovies={props.listSavedMovies}
                                 handleGetSavedMovies={props.handleGetSavedMovies}
                                 handleDeleteMovie={props.handleDeleteMovie}/>

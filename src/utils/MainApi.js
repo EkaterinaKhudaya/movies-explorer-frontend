@@ -105,7 +105,7 @@ class MainApi {
     _getResponseData(res) {
         if (!res.ok) {
             return res.text().then((result) =>
-                Promise.reject({status: `Ошибка: ${res.status}`, message: JSON.parse(result).message})
+                Promise.reject({status: `${res.status}`, message: JSON.parse(result).message})
             )
 
 

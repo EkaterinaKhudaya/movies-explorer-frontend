@@ -2,12 +2,16 @@ import './FilterCheckbox.css'
 import React from 'react';
 
 function FilterCheckbox(props) {
-    const [isToggle, switchToggle] = React.useState(false)
+    const isToggle = props.shortFilms
+
+    React.useEffect(() => {
+         props.handleShortFilm(isToggle)
+    }, [isToggle])
 
     const toggle = () => {
         let data = !isToggle
         props.handleShortFilm(data)
-        switchToggle(data)
+        // switchToggle(data)
     }
 
     return (

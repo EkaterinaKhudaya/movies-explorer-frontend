@@ -10,12 +10,15 @@ import {SearchMovies} from "../FilterData/FilterData";
 
 function Movies(props) {
     const {
+        shortFilms,
+        fullList,
+        cardsSearch,
+        changeIsPreloader,
         cardsList,
         isEmptyFilter,
         isPreloader,
         handleSearchMovies,
         handleShortFilm,
-        getFullList,
         page,
         changePage
     } = SearchMovies()
@@ -23,27 +26,54 @@ function Movies(props) {
     const [numberLoadMovies, setNumberLoadMovies] = React.useState(7);
 
     React.useEffect(() => {
-        window.addEventListener('resize', (event)=> setTimeout(changeNumberLoadMovies, 100, event.target.innerWidth));
+        window.addEventListener('resize', (event) => setTimeout(changeNumberLoadMovies, 100, event.target.innerWidth));
         return () => {
-            document.removeEventListener('resize', (event)=> changeNumberLoadMovies(event.target.innerWidth));
+            document.removeEventListener('resize', (event) => changeNumberLoadMovies(event.target.innerWidth));
         };
     })
     React.useEffect(() => {
         changeNumberLoadMovies(window.innerWidth)
         setIsErrorFilter(false)
+    }, [])
+
+
+    const loadMovies = (data) => {
         apiMovies.getMovies()
             .then((response) => {
-                getFullList(response)
+                handleSearchMovies(data, response)
             })
             .catch((error) => {
                 setIsErrorFilter(true)
                 console.log(error)
             })
-    }, [getFullList])
+            .finally(() => {
+                    changeIsPreloader(false)
+                }
+            )
+
+    }
+
+    const handleSearch = (data) => {
+        changeIsPreloader(true)
+        if (fullList.length === 0) {
+            loadMovies(data)
+        } else {
+            handleSearchMovies(data, fullList)
+            changeIsPreloader(false)
+        }
+    }
+
+    const handleSearchShortFilm = (data) => {
+        handleShortFilm(data)
+        if (fullList.length > 0) {
+            handleSearch(cardsSearch)
+        }
+
+    }
 
 
     const changeNumberLoadMovies = (data) => {
-        if (data<=320) {
+        if (data <= 320) {
             setNumberLoadMovies(5)
         } else {
             setNumberLoadMovies(7)
@@ -71,19 +101,22 @@ function Movies(props) {
     return (
         <main className="movies">
             <section className="movies__search">
-                <SearchForm handleLoadData={handleSearchMovies} handleShortFilm={handleShortFilm}/>
+                <SearchForm handleLoadData={handleSearch} handleShortFilm={handleSearchShortFilm}
+                            shortFilms={shortFilms}/>
             </section>
             <section className="movies-cards">
                 {isPreloader && <Preloader/>}
                 {(isErrorFilter || isEmptyFilter) &&
                 <SearchError isServerError={isErrorFilter} isFilterError={isEmptyFilter}/>}
+                {!isPreloader &&
                 <MoviesCardList loadCards={page}
-                                cardsList={cardsList ? sliceCardList() : []}
+                                cardsList={cardsList.length > 0 ? sliceCardList() : []}
                                 savedMovies={props.savedMovies}
                                 handleSaveMovie={props.handleSaveMovie}
                                 handleDeleteMovie={props.handleDeleteMovie}/>
+                }
             </section>
-            {checkIsLoadCard()
+            {checkIsLoadCard() && !isPreloader
             &&
             <section className="movies__load">
                 <button type="button" className="movies__load-button" onClick={clickLoadCard}>Ещё</button>

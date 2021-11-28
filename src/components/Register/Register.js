@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import './Register.css'
 import logoPath from "../../images/logo.svg";
-import { useFormWithValidation} from "../ValidationForm/validation"
+import {useFormWithValidation} from "../ValidationForm/validation"
 
 function Register(props) {
     const {values, handleChange, errors, isValid, resetForm} = useFormWithValidation();
@@ -40,6 +40,7 @@ function Register(props) {
                         <div className="register__input">
                             <label className="register__field">Email</label>
                             <input className="register__item" type="email"
+                                   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$"
                                    id="email-input" value={values.email || ''} onChange={handleChange}
                                    name="email" minLength="2" required/>
                             {errors?.email?.length > 0 && <span className="error">{errors.email}</span>}
@@ -53,7 +54,8 @@ function Register(props) {
                         </div>
                     </div>
                     <div className="register__submit">
-                        <input className={isValid ? "register__button":"register__button_disabled"} type="submit" value="Зарегистрироваться" disabled={!isValid}/>
+                        <input className={isValid ? "register__button" : "register__button_disabled"} type="submit"
+                               value="Зарегистрироваться" disabled={!isValid}/>
                         <div className="register__action">
                             <p className="register__question">Уже зарегистрированы?</p>
                             <Link to="signin" className="register__link">Войти</Link>

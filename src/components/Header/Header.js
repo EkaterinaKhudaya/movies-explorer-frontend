@@ -11,13 +11,21 @@ function Header(props) {
 
     const [screenWidth, setScreenWidth] = React.useState(0);
     React.useEffect(() => {
-        window.addEventListener('resize', (event) => {
-            setScreenWidth(event.target.innerWidth)
-        })
+       checkScreenSize()
     }, []);
 
+    React.useEffect(() => {
+        window.addEventListener('resize', (event)=> setTimeout(checkScreenSize, 100));
+        return () => {
+            document.removeEventListener('resize', (event)=> checkScreenSize());
+        };
+    })
+
+    function checkScreenSize() {
+        setScreenWidth(window.innerWidth)
+    }
+
     const handleMenuClick = () => {
-        console.log(props.isNavigationMenuOpen)
         props.toggleNavigationMenu(!props.isNavigationMenuOpen);
     };
 
@@ -25,17 +33,16 @@ function Header(props) {
         return currentPath.pathname
     }
 
-
     return (
         <header className={`${getLocation() === "/" ? 'header__main' : ''}
         ${getLocation() === '/signin' || getLocation() === '/signup' ? 'header_sign' : 'header'}`}>
             <Link to="/">
                 <img src={logoPath} alt="Логотип проекта" className="header__logo"/>
             </Link>
-            {(getLocation() === '/movies' || getLocation() === "/saved-movies" || getLocation() === "/profile") && screenWidth > 768 ?
+            {props.loggedIn && screenWidth > 768 ?
                 <Navigation/>
                 : ''}
-            {(getLocation() === '/movies' || getLocation() === "/saved-movies" || getLocation() === "/profile") && screenWidth > 768 ?
+            {props.loggedIn && screenWidth > 768 ?
                 <Link to="profile" className="header__account">
                     <p className="header__account-link">Аккаунт</p>
                     <div className="header__account-image">
@@ -43,11 +50,11 @@ function Header(props) {
                     </div>
                 </Link>
                 : ''}
-            {(getLocation() === '/movies' || getLocation() === "/saved-movies" || getLocation() === "/profile") && screenWidth <= 768 ?
+            {props.loggedIn && screenWidth <= 768 ?
                 <img src={menuIcon} alt="иконка меню навигации" className="header__navigation-menu"
                      onClick={handleMenuClick}/>
                 : ''}
-            {getLocation() === "/" ?
+            {(getLocation() === "/" && !props.loggedIn) ?
                 <div className="header__info">
                     <Link to="signup" className="header__link">Регистрация</Link>
 

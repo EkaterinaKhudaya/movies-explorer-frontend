@@ -1,16 +1,21 @@
 import './SearchForm.css'
 import searchIcon from "../../images/serchIcon.svg";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import {useFormWithValidation} from "../ValidationForm/validation";
-
 import React from 'react';
 
-function SearchForm(props) {
-    const {values, handleChange, errors} = useFormWithValidation();
 
-     function handleSubmit(e) {
+function SearchForm(props) {
+    const searchRef = React.useRef();
+    const [isErrorMessage, setIsErrorMessage] = React.useState(false);
+
+    function handleSubmit(e) {
         e.preventDefault();
-        props.handleLoadData(values.search)
+        if (searchRef.current.value.length > 0) {
+            props.handleLoadData(searchRef.current.value)
+        } else {
+            setIsErrorMessage(true)
+        }
+
     }
 
     return (
@@ -19,13 +24,18 @@ function SearchForm(props) {
                 <div className="search__icon">
                     <img src={searchIcon} alt="Лупа" className="search__icon-image"/>
                 </div>
-                <input type="text" name="search" value={values.search || ''}
-                       required onChange={handleChange} className="search__input" placeholder="Фильм"/>
-                 {errors?.search && <span className="error">Нужно ввести ключевое слово</span>}
-                <button type="submit" className="search__button" >Найти</button>
+                <label className="search__input">
+                <input type="text" name="search" ref={searchRef} onChange={() => setIsErrorMessage(false)}
+                       className="search__input" placeholder="Фильм"/>
+                       <span className="error">{ isErrorMessage ? 'Нужно ввести ключевое':'' }</span>
+                       </label>
+
+                <button type="submit" className="search__button">Найти</button>
             </form>
+
             <div className="search__filter">
-                <FilterCheckbox handleShortFilm={props.handleShortFilm} handleLoadData={props.handleLoadData}/>
+                <FilterCheckbox handleShortFilm={props.handleShortFilm} handleLoadData={props.handleLoadData}
+                                shortFilms={props.shortFilms}/>
             </div>
         </div>
     )
