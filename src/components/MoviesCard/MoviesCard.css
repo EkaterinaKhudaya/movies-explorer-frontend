@@ -67,10 +67,13 @@
     border: none;
 }
 
+
 .movie-card__image {
-    object-fit: cover;
     margin: 6px;
+    width: 220px;
+    height: 122px;
 }
+
 
 
 @media screen and (max-width: 690px) {
@@ -97,7 +100,8 @@
 
     .movie-card__image {
         margin: 0;
-        width: 100%;
+        width: 300px;
+        height: 168px;
     }
 
     .movie-card__title {

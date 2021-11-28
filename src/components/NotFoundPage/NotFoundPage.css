@@ -34,12 +34,19 @@
 }
 
 .not-found-page_link {
+    position: fixed;
     text-decoration: none;
     color: #000000;
     font-size: 14px;
     font-weight: normal;
     justify-self: end;
     margin-bottom: 60px;
+    opacity: 1;
+}
+
+.not-found-page_link:hover {
+    cursor: pointer;
+   opacity: 0.8;
 }
 
 @media screen and (max-width: 500px) {

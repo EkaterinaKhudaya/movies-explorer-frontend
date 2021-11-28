@@ -1,80 +1,42 @@
 import MovieCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
-import movieImage from '../../images/movieImage.png';
 import React from 'react';
 
 function MoviesCardList(props) {
-    const cardsList = [
-        {
-            id: 1,
-            name: '33 слова о дизайнеsss',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-        {
-            id: 2,
-            name: '33 слова о дизайне',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-        {
-            id: 3,
-            name: '33 слова о дизайне',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-        {
-            id: 4,
-            name: '33 слова о дизайне',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-        {
-            id: 5,
-            name: '33 слова о дизайне',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-        {
-            id: 6,
-            name: '33 слова о дизайне',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-         {
-            id: 7,
-            name: '33 слова о дизайне',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-         {
-            id: 8,
-            name: '33 слова о дизайне',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-         {
-            id: 9,
-            name: '33 слова о дизайне',
-            duration: '1ч 42м',
-            image: movieImage
-        },
-    ]
 
-    function sliceCardList() {
-        if (props.loadCards) {
-             return cardsList.slice(0,7*props.loadCards)
-        } else {
-            return cardsList
-        }
+    // React.useEffect(() => {
+    //     if (props.handleGetSavedMovies) {
+    //         props.handleGetSavedMovies()
+    //     }
+    //
+    //
+    // }, []);
 
+     function clickOnCardSave(card) {
+        props.handleSaveMovie(card)
     }
+
+     function clickOnCardUnSave(card) {
+          console.log(props.savedMovies)
+        console.log(card)
+        props.handleDeleteMovie(card)
+    }
+
+
+
+
+
     return (
         <ul className="movies-cards__list">
-            {sliceCardList().map((item) =>
+            {props.cardsList && props.cardsList.map((item, index) =>
+                <div className="movies-cards__list-item" key={index}>
+                    <MovieCard card={item}
 
-                <div className="movies-cards__list-item">
-                    <MovieCard key={item['id']} card={item} />
+                               handleOnCardUnSave ={clickOnCardUnSave}
+                               handleOnCardSave={clickOnCardSave}
+                               savedMovies={props.savedMovies}
+                               handleSaveMovie={props.handleSaveMovie}
+                               handleDeleteMovie={props.handleDeleteMovie}/>
                 </div>
             )}
         </ul>

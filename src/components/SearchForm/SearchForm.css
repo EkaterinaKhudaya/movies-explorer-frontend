@@ -17,7 +17,7 @@
     padding-right: 19px;
     background-color: #FDFDFD;
     border-right: 1px solid #CBCBCB;
-    align-items: center;
+    align-items: start;
 }
 
 .search__input {
